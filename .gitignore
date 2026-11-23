@@ -1,0 +1,18 @@
+# xv6 / RISC-V / QEMU
+*.o
+*.d
+kernel/kernel
+xv6*.img
+fs.img
+.user
+# build xv6
+kernel/*.asm
+kernel/*.sym
+user/_*
+mkfs/mkfs
+# gdb
+.gdb_history
+# macOS
+.DS_Store
+# binaries lab util tự build
+t0
