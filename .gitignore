@@ -18,3 +18,5 @@ mkfs/mkfs
 t0
 # nested xv6 checkout (repo MIT) - chỉ giữ patch/file copy ở labs/lab-*
 labs/xv6-labs-2023/
+# local notes (không commit)
+*-local.md
