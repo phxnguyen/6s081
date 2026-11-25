@@ -16,3 +16,5 @@ mkfs/mkfs
 .DS_Store
 # binaries lab util tự build
 t0
+# nested xv6 checkout (repo MIT) - chỉ giữ patch/file copy ở labs/lab-*
+labs/xv6-labs-2023/
