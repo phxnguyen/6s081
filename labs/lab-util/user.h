@@ -8,14 +8,39 @@ struct stat;
 // if p == 0, which means in child process 
 // otherwise, err
 int fork(void);
+
+/*
+  @param 0 when EXIT_SUCCESS
+  @param 1 or != 0 when EXIT_FAILURE
+*/
 int exit(int) __attribute__((noreturn));
 int wait(int*);
 
 // create a new pipe, pass in an array with 2 elements 
 // first one is read end, second one is write end
-int pipe(int*);
+
+/*
+  @param: fd[2]: array có 2 ele tương đương với 2 xô 
+    - fd[0]: read end, để read
+    - fd[1]: write end, để write
+  @return 0: tạo pipe ok 
+  @return -1: err (hết file table/ hết proc)
+  @important: nhớ đóng cái đầu không xài bằng syscall end()
+*/
+int pipe(int *fd);
+/*
+  @brief write vào fd
+*/
 int write(int fd, const void*, int);
-int read(int, void*, int);
+/*
+  @param fd:  0 stdin, 1 stdout, 2 stderr, còn lại do open()/pipe() cấp.
+  @param *buf: the address of cái xô 
+  @param n: how big the xô you want, n <= size(buf)
+  @return >0: số bytes đọc được (có thể < n)
+  @return 0: EOF 
+  @return -1: err
+*/
+int read(int fd, void *buf, int n);
 int close(int);
 int kill(int);
 int exec(const char*, char**);
